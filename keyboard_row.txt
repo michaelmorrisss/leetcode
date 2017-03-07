@@ -1,0 +1,27 @@
+public class Solution {
+    public String[] findWords(String[] words) {
+        int topRow = 0;
+        int middleRow = 0;
+        int bottomRow = 0;
+        Set<String> topLetters = new HashSet<String>(Arrays.asList("q", "w", "e", "r", "t", "y", "u", "i", "o", "p"));
+        Set<String> middleLetters = new HashSet<String>(Arrays.asList("a", "s", "d", "f", "g", "h", "j", "k", "l"));
+        Set<String> bottomLetters = new HashSet<String>(Arrays.asList("z", "x", "c", "v", "b", "n", "m"));
+        Set<String> wordLetters = new HashSet<String>();
+        List<String> oneLineableWords = new ArrayList<String>();
+        for (String str : words) {
+            for (char ch : str.toCharArray()) {
+                wordLetters.add(Character.toString(ch).toLowerCase());
+            }
+            if (topLetters.containsAll(wordLetters) || middleLetters.containsAll(wordLetters) || bottomLetters.containsAll(wordLetters)) {
+                oneLineableWords.add(str);
+            }
+            wordLetters.clear();
+        }
+        
+        String[] stringArray = oneLineableWords.toArray(new String[0]);
+        for (String str : oneLineableWords) {
+            System.out.println(str);
+        }
+        return stringArray;
+    }
+}
