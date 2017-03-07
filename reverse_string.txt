@@ -1,0 +1,18 @@
+public class Solution {
+    public String reverseString(String s) {
+        HashMap<Integer, Character> chars = new HashMap<Integer, Character>();
+        int i = 0;
+        for (char ch : s.toCharArray()) {
+            chars.put(i, ch);
+            i++;
+        }
+        String reversedString = "";
+        i--;
+        while (i > -1) {
+            
+            reversedString = reversedString + chars.get(i);
+            i--;
+        }
+        return reversedString;
+    }
+}
