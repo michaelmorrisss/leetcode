@@ -1,0 +1,13 @@
+public class Solution {
+    public int findComplement(int num) {
+        int mask = 0b0; //Declare int mask as binary 0 -- binary can be represented in Java with a leading 0b
+        int temp = num; //Declares a temporary clone for num
+        
+        while (temp > 0) {
+            temp = temp >> 1; //Shifts the temp value to the left -- this will eventually make temp equal to 0, ending the loop
+            mask = (mask << 1) | 1; //Changes the mask so that a 1 is added to the end of mask for every binary digit in temp
+        }
+        
+        return num ^ mask; //When num is XORed with mask, the complementary binary number is generated
+    }
+}
