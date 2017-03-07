@@ -1,0 +1,22 @@
+public class Solution {
+    public boolean detectCapitalUse(String word) {
+        char[] chars = word.toCharArray();
+        boolean firstUpperCase = false;
+        boolean upperCase = false;
+        boolean lowerCase = false;
+        if (word.length() == 1) return true;
+        if (Character.isUpperCase(chars[0])) firstUpperCase = true;
+        if (firstUpperCase) { //If the first letter is upper case
+            for (int i = 1; i < chars.length; i++) {
+                if (Character.isUpperCase(chars[i])) upperCase = true;
+                if (Character.isLowerCase(chars[i])) lowerCase = true;
+                if (upperCase && lowerCase) return false;
+            }
+        } else { //If the first letter is lower case
+            for (int i = 1; i < chars.length; i++) {
+                if (Character.isUpperCase(chars[i])) return false;
+            }
+        }
+        return true;
+    }
+}
