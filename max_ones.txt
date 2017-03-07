@@ -1,0 +1,19 @@
+public class Solution {
+    public int findMaxConsecutiveOnes(int[] nums) {
+        int permOnes = 0;
+        int tempOnes = 0;
+        for (int x : nums) {
+            if (x == 1) {
+                tempOnes++;
+                if (tempOnes > permOnes) {
+                    permOnes = tempOnes;
+                }
+            }
+            if (x == 0) {
+                tempOnes = 0;
+            }
+        }
+        return permOnes;
+    }
+    
+}
