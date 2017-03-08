@@ -1,0 +1,22 @@
+public class Solution {
+    public char findTheDifference(String s, String t) {
+        HashMap<Character, Integer> tMap = new HashMap<Character, Integer>();
+        for (char ch : t.toCharArray()) {
+            if (tMap.containsKey(ch)) {
+                tMap.put(ch, tMap.get(ch) + 1);
+            } else {
+                tMap.put(ch, 1);
+            }
+        }
+        for (char ch : s.toCharArray()) {
+            if (tMap.get(ch) > 1) {
+                tMap.put(ch, tMap.get(ch) - 1);
+            } else {
+                tMap.remove(ch);
+            }
+        }
+        System.out.println(tMap.values());
+        System.out.println(tMap.keySet());
+        return tMap.keySet().iterator().next();
+    }
+}
