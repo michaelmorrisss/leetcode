@@ -1,0 +1,17 @@
+public class Solution {
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+        HashMap<Integer, Integer> allNums = new HashMap<Integer, Integer>();
+        List<Integer> disappearedNums = new ArrayList<Integer>();
+        for (int i = 0; i < nums.length; i++) {
+            allNums.put(nums[i], 1);
+        }
+        for (int i = 1; i <= nums.length; i++) {
+            if (allNums.containsKey(i)) {
+                
+            } else {
+                disappearedNums.add(i);
+            }
+        }
+        return disappearedNums;
+    }
+}
