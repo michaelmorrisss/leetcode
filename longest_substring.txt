@@ -1,0 +1,28 @@
+public class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        // Create a HashSet that contains the used characters
+        // Keep tabs on the longest substring
+        if (s.length() == 0) return 0;
+        HashSet<Character> chars = new HashSet<Character>();
+        int longestSubstring = 1;
+        int currentLength = 1;
+        for (int i = 0; i < s.length(); i++) {
+            chars.add(s.charAt(i));
+            for (int j = i+1; j < s.length(); j++) {
+                //check if j is in the hashmap
+                if (chars.contains(s.charAt(j))) {
+                    break;
+                }
+                chars.add(s.charAt(j));
+                currentLength++;
+                System.out.println("s:" + s.charAt(j));
+            }
+            if (currentLength > longestSubstring) {
+                longestSubstring = currentLength;
+            }
+            currentLength = 1;
+            chars.clear();
+        }
+        return longestSubstring;
+    }
+}
