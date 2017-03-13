@@ -1,0 +1,28 @@
+public class Solution {
+    public boolean isValid(String s) {
+        if (s.length() == 1) return false;
+        char[] array = new char[s.length()];
+        array = s.toCharArray();
+        for (int i = 0; i < s.length(); i++) {
+            for (int j = i+1; j < s.length(); j++) {
+                if (array[i] == '(' && array[j] == ')') {
+                    array[i] = 'z';
+                    array[j] = 'z';
+                }
+                if (array[i] == '{' && array[j] == '}') {
+                    array[i] = 'z';
+                    array[j] = 'z';
+                }
+                if (array[i] == '[' && array[j] == ']') {
+                    array[i] = 'z';
+                    array[j] = 'z';
+                }
+            }
+        }
+        for (int i = 0; i < s.length(); i++) {
+            System.out.println(array[i] + "-");
+            if (array[i] != 'z') return false;
+        }
+        return true;
+    }
+}
